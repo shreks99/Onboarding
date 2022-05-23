@@ -3,6 +3,7 @@ package com.shreks.Onboarding.service;
 import com.shreks.Onboarding.data.entity.RoleEntity;
 import com.shreks.Onboarding.data.model.Role;
 import com.shreks.Onboarding.data.repository.RoleRepository;
+import com.shreks.Onboarding.util.DateTimeUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,8 +14,11 @@ import java.util.stream.Collectors;
 public class RoleServiceImpl implements RoleService{
     final RoleRepository roleRepository;
 
-    public RoleServiceImpl(RoleRepository roleRepository) {
+    private final DateTimeUtil dateTimeUtil;
+
+    public RoleServiceImpl(RoleRepository roleRepository, DateTimeUtil dateTimeUtil) {
         this.roleRepository = roleRepository;
+        this.dateTimeUtil = dateTimeUtil;
     }
 
     @Override
@@ -53,12 +57,15 @@ public class RoleServiceImpl implements RoleService{
         RoleEntity roleEntity = roleRepository.findById(role.getRoleId()).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + role.getRoleId()));
         //Add modified time
         roleEntity.setRoleName(role.getRoleName());
+        roleEntity.setUpdateBy(role.getUpdateBy());
+        roleEntity.setUpdateTime(dateTimeUtil.getCurrentUTCTimestamp());
         return  roleEntity;
     }
 
     private RoleEntity mapRoleDTOToEntity(Role role) {
         RoleEntity roleEntity = new RoleEntity();
         roleEntity.setRoleName(role.getRoleName());
+        roleEntity.setUpdateTime(dateTimeUtil.getCurrentUTCTimestamp());
         return roleEntity;
     }
 
@@ -66,6 +73,8 @@ public class RoleServiceImpl implements RoleService{
         Role role = new Role();
         role.setRoleId(roleEntity.getRoleId());
         role.setRoleName(roleEntity.getRoleName());
+        role.setUpdateBy(roleEntity.getUpdateBy());
+        role.setUpdateTime(roleEntity.getUpdateTime());
         return role;
     }
 }
