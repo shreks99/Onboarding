@@ -1,9 +1,9 @@
-package com.shreks.Onboarding.service;
+package com.shreks.onboarding.service;
 
-import com.shreks.Onboarding.data.entity.RoleEntity;
-import com.shreks.Onboarding.data.model.Role;
-import com.shreks.Onboarding.data.repository.RoleRepository;
-import com.shreks.Onboarding.util.DateTimeUtil;
+import com.shreks.onboarding.data.entity.RoleEntity;
+import com.shreks.onboarding.data.model.Role;
+import com.shreks.onboarding.data.repository.RoleRepository;
+import com.shreks.onboarding.util.DateTimeUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -65,6 +65,7 @@ public class RoleServiceImpl implements RoleService{
     private RoleEntity mapRoleDTOToEntity(Role role) {
         RoleEntity roleEntity = new RoleEntity();
         roleEntity.setRoleName(role.getRoleName());
+        roleEntity.setUpdateBy(role.getUpdateBy());
         roleEntity.setUpdateTime(dateTimeUtil.getCurrentUTCTimestamp());
         return roleEntity;
     }
