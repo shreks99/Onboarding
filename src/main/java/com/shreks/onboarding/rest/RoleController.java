@@ -1,8 +1,7 @@
-package com.shreks.Onboarding.rest;
+package com.shreks.onboarding.rest;
 
-import com.shreks.Onboarding.data.entity.RoleEntity;
-import com.shreks.Onboarding.data.model.Role;
-import com.shreks.Onboarding.service.RoleService;
+import com.shreks.onboarding.data.model.Role;
+import com.shreks.onboarding.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

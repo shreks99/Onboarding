@@ -1,4 +1,4 @@
-package com.shreks.Onboarding.util;
+package com.shreks.onboarding.util;
 
 import org.joda.time.LocalDateTime;
 import org.springframework.stereotype.Component;

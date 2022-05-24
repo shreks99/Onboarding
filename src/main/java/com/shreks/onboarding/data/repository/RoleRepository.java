@@ -1,6 +1,6 @@
-package com.shreks.Onboarding.data.repository;
+package com.shreks.onboarding.data.repository;
 
-import com.shreks.Onboarding.data.entity.RoleEntity;
+import com.shreks.onboarding.data.entity.RoleEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

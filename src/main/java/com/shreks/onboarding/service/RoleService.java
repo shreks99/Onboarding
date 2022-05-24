@@ -1,6 +1,6 @@
-package com.shreks.Onboarding.service;
+package com.shreks.onboarding.service;
 
-import com.shreks.Onboarding.data.model.Role;
+import com.shreks.onboarding.data.model.Role;
 
 import java.util.List;
 
