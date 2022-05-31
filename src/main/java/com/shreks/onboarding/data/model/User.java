@@ -13,6 +13,16 @@ public class User {
 
     private String updateBy;
 
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public User() {
     }
 

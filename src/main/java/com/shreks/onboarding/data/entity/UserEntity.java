@@ -23,6 +23,29 @@ public class UserEntity {
     @Column(name="UPDATE_BY")
     private String updateBy;
 
+    @OneToOne(mappedBy = "userEntity",cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private PartnerDetailsEntity partnerDetailsEntity;
+
+    @ManyToOne
+    private RoleEntity roleEntity;
+
+    public RoleEntity getRoleEntity() {
+        return roleEntity;
+    }
+
+    public void setRoleEntity(RoleEntity roleEntity) {
+        this.roleEntity = roleEntity;
+    }
+
+    public PartnerDetailsEntity getPartnerDetailsEntity() {
+        return partnerDetailsEntity;
+    }
+
+    public void setPartnerDetailsEntity(PartnerDetailsEntity partnerDetailsEntity) {
+        this.partnerDetailsEntity = partnerDetailsEntity;
+    }
+
     public long getUserId() {
         return userId;
     }
