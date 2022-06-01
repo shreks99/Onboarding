@@ -22,7 +22,7 @@ public class RoleEntity {
     @Column(name="UPDATE_BY")
     private String updateBy;
 
-    @OneToMany(mappedBy = "roleEntity")
+    @OneToMany(mappedBy = "roleEntity",fetch = FetchType.LAZY)
     List<UserEntity> userEntityList;
 
     public int getRoleId() {

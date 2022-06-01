@@ -15,10 +15,19 @@ public class PartnerDetailsEntity {
     private Date joiningDate;
 
     @Column(name = "DROPOUT_REASON")
+    private String dropoutReason;
+
+    @Column(name = "PERSONAL_EMAIL")
     private String personalEmail;
+
+    @Column(name = "PHONE")
+    private String phone;
 
     @Column(name = "ADDRESS")
     private String address;
+
+    @Column(name = "STATUS")
+    private String status;
 
     @Column(name = "REQUISITION_NUMBER")
     private Integer requisitionNumber;
@@ -129,5 +138,29 @@ public class PartnerDetailsEntity {
 
     public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
+    }
+
+    public String getDropoutReason() {
+        return dropoutReason;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setDropoutReason(String dropoutReason) {
+        this.dropoutReason = dropoutReason;
     }
 }

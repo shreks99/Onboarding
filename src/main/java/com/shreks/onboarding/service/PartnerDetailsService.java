@@ -1,15 +1,16 @@
 package com.shreks.onboarding.service;
 
 import com.shreks.onboarding.data.model.PartnerDetails;
+import com.shreks.onboarding.data.model.PartnerDetailsResponse;
 
 import java.util.List;
 
 public interface PartnerDetailsService {
-    List<PartnerDetails> getAllPartnerDetails();
+    List<PartnerDetailsResponse> getAllPartnerDetails();
 
     void savePartnerDetails(PartnerDetails partnerDetails);
 
-    PartnerDetails getPartnerDetailsById(Long partnerDetailsId);
+    PartnerDetailsResponse getPartnerDetailsById(Long partnerDetailsId);
 
     void deletePartnerDetailsById(Long partnerDetailsId);
 

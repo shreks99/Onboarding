@@ -7,9 +7,15 @@ public class PartnerDetails {
 
     private Date joiningDate;
 
+    private String dropoutReason;
+
     private String personalEmail;
 
+    private String phone;
+
     private String address;
+
+    private String status;
 
     private Integer requisitionNumber;
 
@@ -111,5 +117,29 @@ public class PartnerDetails {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getDropoutReason() {
+        return dropoutReason;
+    }
+
+    public void setDropoutReason(String dropoutReason) {
+        this.dropoutReason = dropoutReason;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

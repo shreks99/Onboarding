@@ -1,6 +1,7 @@
 package com.shreks.onboarding.rest;
 
 import com.shreks.onboarding.data.model.PartnerDetails;
+import com.shreks.onboarding.data.model.PartnerDetailsResponse;
 import com.shreks.onboarding.service.PartnerDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class PartnerDetailsController {
     }
 
     @GetMapping
-    public List<PartnerDetails> getAllPartnerDetails() {
+    public List<PartnerDetailsResponse> getAllPartnerDetails() {
         return partnerDetailsService.getAllPartnerDetails();
     }
 
@@ -29,7 +30,7 @@ public class PartnerDetailsController {
     }
 
     @GetMapping(path="/{partnerDetailsId}")
-    public PartnerDetails getPartnerDetailsById(@PathVariable("partnerDetailsId") Long partnerDetailsId) {
+    public PartnerDetailsResponse getPartnerDetailsById(@PathVariable("partnerDetailsId") Long partnerDetailsId) {
         return partnerDetailsService.getPartnerDetailsById(partnerDetailsId);
     }
 

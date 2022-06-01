@@ -1,9 +1,13 @@
 package com.shreks.onboarding.service;
 
+import com.shreks.onboarding.data.entity.RoleEntity;
 import com.shreks.onboarding.data.entity.UserEntity;
+import com.shreks.onboarding.data.model.Role;
 import com.shreks.onboarding.data.model.User;
+import com.shreks.onboarding.data.repository.RoleRepository;
 import com.shreks.onboarding.data.repository.UserRepository;
 import com.shreks.onboarding.util.DateTimeUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,11 +17,14 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService {
     final UserRepository userRepository;
+    final RoleRepository roleRepository;
 
     private final DateTimeUtil dateTimeUtil;
 
-    public UserServiceImpl(UserRepository userRepository, DateTimeUtil dateTimeUtil) {
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, DateTimeUtil dateTimeUtil) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
         this.dateTimeUtil = dateTimeUtil;
     }
 
@@ -60,6 +67,9 @@ public class UserServiceImpl implements UserService {
         userEntity.setLanId(user.getLanId());
         userEntity.setUpdateBy(user.getUpdateBy());
         userEntity.setUpdateTime(dateTimeUtil.getCurrentUTCTimestamp());
+
+        userEntity.setRoleEntity(roleRepository.findById(user.getRole().getRoleId()).orElseThrow(() -> new IllegalArgumentException("Invalid role Id:" + user.getRole().getRoleId())));
+
         return  userEntity;
     }
 
@@ -79,6 +89,14 @@ public class UserServiceImpl implements UserService {
         user.setLanId(userEntity.getLanId());
         user.setUpdateBy(userEntity.getUpdateBy());
         user.setUpdateTime(userEntity.getUpdateTime());
+        user.setRole(mapRoleDTO(userEntity.getRoleEntity()));
         return user;
+    }
+
+    private Role mapRoleDTO(RoleEntity roleEntity) {
+        Role role = new Role();
+        role.setRoleId(roleEntity.getRoleId());
+        role.setRoleName(roleEntity.getRoleName());
+        return role;
     }
 }
