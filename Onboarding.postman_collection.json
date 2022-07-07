@@ -1,0 +1,418 @@
+{
+	"info": {
+		"_postman_id": "ee4f59b0-f854-48c6-97df-8ffb6a69e96a",
+		"name": "Onboarding",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10798731"
+	},
+	"item": [
+		{
+			"name": "Get All Role",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base-url}}:8080/role",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Role By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base-url}}:8080/role/10",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"role",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Role By Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base-url}}:8080/role/10",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"role",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Role",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"roleName\": \"Sample23\",\r\n        \"updateBy\": \"POSTMAN\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}:8080/role",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Role",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"roleId\": \"3\",\r\n    \"roleName\": \"Employee\",\r\n    \"updateBy\": \"POSTMAN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}:8080/role",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"roleName\":\"Admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}:8080/role",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base-url}}:8080/user",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base-url}}:8080/role/3",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"role",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete UserBy Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base-url}}:8080/role/2",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"role",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"userId\": 17,\r\n        \"userName\": \"Batman update\",\r\n        \"lanId\": \"BSNL\",\r\n        \"updateBy\": \"Postman\",\r\n        \"role\": null\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}:8080/user",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Tower",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base-url}}:8080/towerBuMapping",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"towerBuMapping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Tower",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tower\":\"sdf\",\r\n    \"businessUnit\": \"NCTR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}:8080/towerBuMapping",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"towerBuMapping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All partnerDetails",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"userId\": 1,\r\n        \"userName\": \"Shrey\",\r\n        \"role\": {\r\n            \"roleId\": 1,\r\n            \"roleName\": \"Admin\"\r\n        },\r\n        \"phones\": [\r\n            {\r\n                \"phoneId\": 1,\r\n                \"name\": \"Voda\",\r\n                \"number\": \"345345\"\r\n            },\r\n            {\r\n                \"phoneId\": 2,\r\n                \"name\": \"Airtel\",\r\n                \"number\": \"345345\"\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"userId\": 2,\r\n        \"userName\": \"AD\",\r\n        \"role\": {\r\n            \"roleId\": 3,\r\n            \"roleName\": \"Manager\"\r\n        }\r\n    },\r\n    {\r\n        \"userId\": 3,\r\n        \"userName\": \"KK\",\r\n        \"role\": null\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}:8080/partner",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"partner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get partnerDetails By Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"userId\": 1,\r\n        \"userName\": \"Shrey\",\r\n        \"role\": {\r\n            \"roleId\": 1,\r\n            \"roleName\": \"Admin\"\r\n        },\r\n        \"phones\": [\r\n            {\r\n                \"phoneId\": 1,\r\n                \"name\": \"Voda\",\r\n                \"number\": \"345345\"\r\n            },\r\n            {\r\n                \"phoneId\": 2,\r\n                \"name\": \"Airtel\",\r\n                \"number\": \"345345\"\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"userId\": 2,\r\n        \"userName\": \"AD\",\r\n        \"role\": {\r\n            \"roleId\": 3,\r\n            \"roleName\": \"Manager\"\r\n        }\r\n    },\r\n    {\r\n        \"userId\": 3,\r\n        \"userName\": \"KK\",\r\n        \"role\": null\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}:8080/partner/15",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"partner",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete partnerDetails By Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"userId\": 1,\r\n        \"userName\": \"Shrey\",\r\n        \"role\": {\r\n            \"roleId\": 1,\r\n            \"roleName\": \"Admin\"\r\n        },\r\n        \"phones\": [\r\n            {\r\n                \"phoneId\": 1,\r\n                \"name\": \"Voda\",\r\n                \"number\": \"345345\"\r\n            },\r\n            {\r\n                \"phoneId\": 2,\r\n                \"name\": \"Airtel\",\r\n                \"number\": \"345345\"\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"userId\": 2,\r\n        \"userName\": \"AD\",\r\n        \"role\": {\r\n            \"roleId\": 3,\r\n            \"roleName\": \"Manager\"\r\n        }\r\n    },\r\n    {\r\n        \"userId\": 3,\r\n        \"userName\": \"KK\",\r\n        \"role\": null\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}:8080/partner/14",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"partner",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save partnerDetails",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": {\r\n        \"userName\": \"Batman\",\r\n        \"lanId\": \"BSNL\",\r\n        \"updateBy\": \"Postman\",\r\n        \"role\": {\r\n            \"roleId\": 2\r\n        }\r\n    },\r\n    \"joiningDate\": \"1980-04-07T18:30:00.000+00:00\",\r\n    \"dropoutReason\": \"NA\",\r\n    \"personalEmail\": \"bat995@gmail.com\",\r\n    \"address\": \"Pune 411037\",\r\n    \"hmUserId\": 8,\r\n    \"buddyUserId\": 9,\r\n    \"requisitionNumber\": 1234,\r\n    \"positionNumber\": 123,\r\n    \"jobTitle\": \"Developer\",\r\n    \"location\": \"Pune\",\r\n    \"phone\":\"3453453\",\r\n    \"status\":\"IN PROGRESS\",\r\n    \"updateBy\": \"Postman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}:8080/partner",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"partner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update partnerDetails",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 19,\r\n    \"user\": {\r\n        \"userId\": 19,\r\n        \"userName\": \"Shrey Updated\",\r\n        \"lanId\": \"BSNL\",\r\n        \"updateBy\": \"Postman\",\r\n        \"role\": {\r\n            \"roleId\": 2\r\n        }\r\n    },\r\n    \"joiningDate\": \"1980-04-07T18:30:00.000+00:00\",\r\n    \"dropoutReason\": \"NA\",\r\n    \"personalEmail\": \"bat995@gmail.com\",\r\n    \"address\": \"Pune 411037\",\r\n    \"hmUserId\": 8,\r\n    \"buddyUserId\": 9,\r\n    \"requisitionNumber\": 1234,\r\n    \"positionNumber\": 123,\r\n    \"jobTitle\": \"Developer\",\r\n    \"location\": \"Pune\",\r\n    \"phone\":\"3453453\",\r\n    \"status\":\"IN PROGRESS\",\r\n    \"updateBy\": \"Postman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}:8080/partner",
+					"host": [
+						"{{base-url}}"
+					],
+					"port": "8080",
+					"path": [
+						"partner"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
