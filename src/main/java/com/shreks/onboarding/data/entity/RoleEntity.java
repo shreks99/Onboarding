@@ -4,6 +4,7 @@ package com.shreks.onboarding.data.entity;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="ROLE")
@@ -22,8 +23,8 @@ public class RoleEntity {
     @Column(name="UPDATE_BY")
     private String updateBy;
 
-    @OneToMany(mappedBy = "roleEntity",fetch = FetchType.LAZY)
-    List<UserEntity> userEntityList;
+    @ManyToMany(mappedBy = "hasRoles",fetch = FetchType.LAZY)
+    Set<UserEntity> userEntityList;
 
     public int getRoleId() {
         return roleId;

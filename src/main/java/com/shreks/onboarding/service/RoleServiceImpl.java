@@ -3,79 +3,83 @@ package com.shreks.onboarding.service;
 import com.shreks.onboarding.data.entity.RoleEntity;
 import com.shreks.onboarding.data.model.Role;
 import com.shreks.onboarding.data.repository.RoleRepository;
-import com.shreks.onboarding.util.DateTimeUtil;
+import com.shreks.onboarding.util.MapperUtil;
+import com.shreks.onboarding.util.exception.ApplicationErrorCodes;
+import com.shreks.onboarding.util.exception.ApplicationException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class RoleServiceImpl implements RoleService{
     final RoleRepository roleRepository;
 
-    private final DateTimeUtil dateTimeUtil;
+    private final MapperUtil mapperUtil;
 
-    public RoleServiceImpl(RoleRepository roleRepository, DateTimeUtil dateTimeUtil) {
+    public static final String INVALID_ROLE_ID = "Invalid role Id:";
+
+    public RoleServiceImpl(RoleRepository roleRepository, MapperUtil mapperUtil) {
         this.roleRepository = roleRepository;
-        this.dateTimeUtil = dateTimeUtil;
+        this.mapperUtil = mapperUtil;
     }
 
     @Override
     @Transactional
     public List<Role> getAllRole() {
         List<RoleEntity> roleEntityList = (List<RoleEntity>) roleRepository.findAll();
-        return roleEntityList.stream().map(this::mapRoleDTO).collect(Collectors.toList());
+        return roleEntityList.stream().map(mapperUtil::mapRoleDTO).collect(Collectors.toList());
     }
 
     @Override
     public void saveRole(Role role) {
-        RoleEntity roleEntity = mapRoleDTOToEntity(role);
-        roleRepository.save(roleEntity);
+        try {
+            RoleEntity roleEntity = mapperUtil.mapRoleDTOToEntity(role);
+            roleRepository.save(roleEntity);
+        } catch (Exception e) {
+            throw new ApplicationException(HttpStatus.INTERNAL_SERVER_ERROR, ApplicationErrorCodes.INTERNAL_SERVER_ERROR, "Error in saving Role");
+        }
+
     }
 
     @Override
     public Role getRoleById(Integer roleId) {
-        //Add try/catch block for exception handling
-        RoleEntity roleEntity = roleRepository.findById(roleId).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + roleId));
-        return mapRoleDTO(roleEntity);
+        RoleEntity roleEntity = roleRepository.findById(roleId).orElseThrow(() -> new ApplicationException(HttpStatus.INTERNAL_SERVER_ERROR, ApplicationErrorCodes.ROLE_NOT_FOUND, INVALID_ROLE_ID + roleId));
+        return mapperUtil.mapRoleDTO(roleEntity);
     }
 
     @Override
     public void deleteRoleById(Integer roleId) {
-        roleRepository.deleteById(roleId);
+        try{
+            roleRepository.deleteById(roleId);
+        } catch(EmptyResultDataAccessException e) {
+            throw new ApplicationException(HttpStatus.INTERNAL_SERVER_ERROR, ApplicationErrorCodes.ROLE_NOT_FOUND, INVALID_ROLE_ID + roleId);
+        }
     }
 
     @Override
     @Transactional
     public void updateRole(Role role) {
-        RoleEntity updatedRoleEntity = mapRoleDTOToExistingEntity(role);
+        RoleEntity updatedRoleEntity = mapperUtil.mapRoleDTOToEntity(role);
+        Optional<RoleEntity> roleEnitity = roleRepository.findById(role.getRoleId());
+        if(roleEnitity.isPresent()){
+            //update logic
+            updatedRoleEntity.setRoleId(role.getRoleId());
+        }
+            roleRepository.save(updatedRoleEntity);
+
+
+
+
+
+
+        updatedRoleEntity.setRoleId(roleRepository.findById(role.getRoleId())
+                .orElseThrow(()->new ApplicationException(HttpStatus.INTERNAL_SERVER_ERROR, ApplicationErrorCodes.ROLE_NOT_FOUND, INVALID_ROLE_ID + role.getRoleId()))
+                .getRoleId());
         roleRepository.save(updatedRoleEntity);
-    }
-
-    private RoleEntity mapRoleDTOToExistingEntity(Role role) {
-        RoleEntity roleEntity = roleRepository.findById(role.getRoleId()).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + role.getRoleId()));
-        //Add modified time
-        roleEntity.setRoleName(role.getRoleName());
-        roleEntity.setUpdateBy(role.getUpdateBy());
-        roleEntity.setUpdateTime(dateTimeUtil.getCurrentUTCTimestamp());
-        return  roleEntity;
-    }
-
-    private RoleEntity mapRoleDTOToEntity(Role role) {
-        RoleEntity roleEntity = new RoleEntity();
-        roleEntity.setRoleName(role.getRoleName());
-        roleEntity.setUpdateBy(role.getUpdateBy());
-        roleEntity.setUpdateTime(dateTimeUtil.getCurrentUTCTimestamp());
-        return roleEntity;
-    }
-
-    private Role mapRoleDTO(RoleEntity roleEntity) {
-        Role role = new Role();
-        role.setRoleId(roleEntity.getRoleId());
-        role.setRoleName(roleEntity.getRoleName());
-        role.setUpdateBy(roleEntity.getUpdateBy());
-        role.setUpdateTime(roleEntity.getUpdateTime());
-        return role;
     }
 }

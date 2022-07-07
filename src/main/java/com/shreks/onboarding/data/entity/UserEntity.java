@@ -2,6 +2,7 @@ package com.shreks.onboarding.data.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "User")
@@ -41,6 +42,13 @@ public class UserEntity {
     public PartnerDetailsEntity getPartnerDetailsEntity() {
         return partnerDetailsEntity;
     }
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_role_mapping",
+            joinColumns = @JoinColumn(name = "USER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
+    Set<RoleEntity> hasRoles;
 
     public void setPartnerDetailsEntity(PartnerDetailsEntity partnerDetailsEntity) {
         this.partnerDetailsEntity = partnerDetailsEntity;
